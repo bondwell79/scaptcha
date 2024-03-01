@@ -1,0 +1,114 @@
+<html>
+<head>
+<style type="text/css">
+.tabla {
+    display: table;
+    border: 1px solid #000;
+    width: 400px;
+	height:400px;
+    text-align: center;
+    margin: 50px auto;
+	position:absolute; 
+	background-color: white;
+}
+.fila {
+    display: table-row;
+}
+.columna {
+    display: table-cell;
+	width: 133px;
+	height: 133px;
+    border: 1px solid #000;
+    vertical-align: middle;
+    padding: 10px;
+}
+</style>
+
+</head
+<body>
+
+<script>
+function asx(v1)
+{
+const fecha = new Date();
+if (as1.value=='vacio') { as1.value = v1 } else { as2.value = v1; objetos_antispam.style.display="none"; }
+as3.value = fecha.getHours()*256;
+}
+
+function crearobjetos()
+{
+let cosas = [		'<button onclick=asx("lapiz")>lapiz</button>',
+					'<button onclick=asx("silla")>silla</button>',
+					'<button onclick=asx("arbol")>arbol</button>',
+					'<button onclick=asx("cuchara")>cuchara</button>',
+					'<button onclick=asx("reloj")>reloj</button>',
+					'<button onclick=asx("tuerca")>tuerca</button>',
+					'<button onclick=asx("vaso")>vaso</button>',
+					'<button onclick=asx("espejo")>espejo</button>',
+					'<button onclick=asx("canica")>canica</button>',
+					'<button onclick=asx("rueda")>rueda</button>',
+					'<button onclick=asx("pelota")>pelota</button>',
+					'<button onclick=asx("borrador")>borrador</button>',
+					'<button onclick=asx("bolsa")>bolsa</button>',
+					'<button onclick=asx("radiografia")>radiografia</button>',
+					'<button onclick=asx("emboltorio")>emboltorio</button>',
+					'<button onclick=asx("borrador")>borrador</button>',
+					'<button onclick=asx("pared")>pared</button>',
+					'<button onclick=asx("estatua")>estatua</button>',
+					'<button onclick=asx("techo")>techo</button>',
+					'<button onclick=asx("gota")>gota</button>',
+					'<button onclick=asx("charco")>charco</button>',
+					'<button onclick=asx("lago")>lago</button>'];
+let tabla='<b>Selecciona dos objetos distintos que compartan material.</b><br>';
+
+let b1 = 0
+while (b1<3)
+{
+tabla = tabla + '<div class="fila">'+'<div class="columna">' + cosas[Math.floor(Math.random() * 21)] +'</div>'+'<div class="columna">' + cosas[Math.floor(Math.random() * 21)] +'</div>'+'<div class="columna">' + cosas[Math.floor(Math.random() * 21)] +'</div></div>';
+b1++;
+}
+tabla = tabla + '</div>';
+
+objetos_antispam.innerHTML=tabla;
+}
+
+function antispam()
+ {
+ crearobjetos();
+ objetos_antispam.style.display="block";
+ objetos_antispam.style.top= document.documentElement.clientHeight/2-200;
+ objetos_antispam.style.left= document.documentElement.clientWidth/2-200;
+ }
+
+</script>
+
+<div class="tabla" id="objetos_antispam" name="objetos_antispam" style="display:none;"></div>
+
+<div class="formulario form-landing">
+
+
+<form id="formcontacto" action="procesar_formulario.php" enctype="multipart/form-data" method="post">
+<div id="datoscontacto">
+
+    <p class="info-form">Completa con tus datos y contactaremos contigo.</p>
+	
+	<input id="asunto" name="asunto" type="hidden" value="Desde la landing <?php echo $asunto;?>" />
+    <div class="caja w100"><input id="nombre"  name="nombre" type="text" placeholder="Nombre" required /></div>
+    <div class="caja w100"><input id="email" name="email" type="text" placeholder="Email" required /></div>
+    <div class="caja w100"><input id="telefono" name="telefono" type="text" placeholder="Teléfono" required /></div>
+	<div class="caja w100" style="display:none;"><input id="utmUrl" name="utmUrl" type="text" placeholder="utmUrl"/></div>
+	<div class="caja"><textarea id="comentario" name="comentario" placeholder="Comentario" style="height: 80px;"></textarea></div>
+	<input id="as1" name="as1" value="vacio" hidden>
+	<input id="as2" name="as2" value="vacio" hidden>
+	<input id="as3" name="as3" value="vacio" hidden>
+    <div class="caja texto textleft caja-check" style="width: 100%;"><input name="acepto" id="acepto" type="checkbox" value="1" required /><label for="acepto"><span></span> He leído y acepto la <a href="/politica-privacidad" target="_blank" style="color: #555;">política de privacidad</a></label></div>
+    <div class="caja texto textleft caja-check" style="width: 100%;"><input name="robot" id="robot" type="checkbox" value="1" onclick="antispam()" required /><label for="robot"><span>Confirmo que soy humano</span></label></div>
+    <div id="botonenviar" class="caja floatr"><input name="enviar" id="enviar1" type="submit" value="Enviar" class="get__btn" style="color: #FFF;" /></div>
+
+</div>
+</form>
+			
+</div>
+</body>
+							
+</html>
